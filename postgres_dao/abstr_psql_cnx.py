@@ -24,6 +24,15 @@ class AbstrPsqlCnx(object):
         print ("Connected to Postgres: " + db_name + "\n")
         self.cursor = self.cnx.cursor()
 
+    def _trunc_table_(self, table):
+        self.cursor.execute("TRUNCATE TABLE " + table)
+
+    def _copy_table_(self, table, field_num, data):
+        val_format = '('+','.join(['%s']*field_num)+')'
+        args_str = ','.join(self.cursor.mogrify(val_format, x) for x in data)
+        self.cursor.execute("INSERT INTO " + table + " VALUES " + args_str)
+        self.cnx.commit()
+
     def close(self):
         self.cursor.close()
         self.cnx.close()

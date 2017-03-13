@@ -30,6 +30,11 @@ class AbstrMySqlCnx(object):
         print ("Connected to mysql: " + db_name + "\n")
         self.cursor = self.cnx.cursor()
 
+    def _select_full_table_(self, table):
+        select_stmt = "SELECT * FROM " + table
+        self.cursor.execute(select_stmt)
+        return self.cursor.fetchall()
+
     def close(self):
         self.cursor.close()
         self.cnx.close()
