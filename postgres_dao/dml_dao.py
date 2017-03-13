@@ -11,12 +11,11 @@ class DmlDao(AbstrPsqlCnx):
 
     def copy_data_to_addr_month_rpt_b(self, data):
         args_str = ','.join(self.cursor.mogrify("(%s,%s,%s,%s,%s,%s,%s,%s)", x) for x in data)
-        self.cursor.execute("INSERT INTO table VALUES " + args_str)
+        self.cursor.execute("INSERT INTO " + ADDR_PRICE_MONTH_RPT_TABLE + " VALUES " + args_str)
         self.cnx.commit()
 
     def trunc_addr_month_rpt(self):
         self.cursor.execute("TRUNCATE TABLE " + ADDR_PRICE_MONTH_RPT_TABLE)
-        self.cnx.commit()
 
     @staticmethod
     def __gen_insert_stmt__():

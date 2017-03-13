@@ -11,4 +11,4 @@ class SelectDao(AbstrMySqlCnx):
 
     @staticmethod
     def __gen_select_stmt__():
-        return "SELECT * FROM " + ADDR_PRICE_MONTH_RPT_TABLE + " LIMIT 2"
+        return "SELECT * FROM " + ADDR_PRICE_MONTH_RPT_TABLE

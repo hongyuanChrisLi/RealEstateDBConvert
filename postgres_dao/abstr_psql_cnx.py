@@ -17,9 +17,8 @@ class AbstrPsqlCnx(object):
                                         password=db_pass,
                                         host=db_host,
                                         port=db_port)
-        except OperationalError as e :
-            print('Failed to connect to Postgres DB')
-            print(e)
+        except OperationalError as e:
+            print 'Failed to connect to Postgres DB\n{0}'.format(e)
             sys.exit(constants.FAILED_TO_CONNECT)
 
         print ("Connected to Postgres: " + db_name + "\n")

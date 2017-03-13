@@ -24,8 +24,7 @@ class AbstrMySqlCnx(object):
         try:
             self.cnx = mysql.connector.connect(**config)
         except ProgrammingError as e:
-            print('Failed to connect to Mysql DB')
-            print(e)
+            print 'Failed to connect to Mysql DB\n{0}'.format(e)
             sys.exit(constants.FAILED_TO_CONNECT)
 
         print ("Connected to mysql: " + db_name + "\n")
