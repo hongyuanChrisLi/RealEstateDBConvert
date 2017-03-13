@@ -1,6 +1,11 @@
 import os
 import mysql.connector
+import sys
+
+from mysql.connector.errors import ProgrammingError
+
 from utility.uri_parser import parse_url
+from utility import constants
 
 
 class AbstrMySqlCnx(object):
@@ -16,5 +21,11 @@ class AbstrMySqlCnx(object):
             'database': database,
             'autocommit': True
             }
-        self.cnx = mysql.connector.connect(**config)
+        try:
+            self.cnx = mysql.connector.connect(**config)
+        except ProgrammingError as e:
+            print('Failed to connect to Mysql DB')
+            print(e)
+            sys.exit(constants.FAILED_TO_CONNECT)
+
         self.cursor = self.cnx.cursor()

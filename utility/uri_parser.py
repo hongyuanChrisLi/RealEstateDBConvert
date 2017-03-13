@@ -12,4 +12,10 @@ def parse_url(url):
     password = cred[1]
     db = str(res.path).lstrip('/')
 
+    print ('Host: ' + host +
+           '\nPort: ' + str(port) +
+           '\nDB: ' + db +
+           '\nUser: ' + username +
+           '\nPass: ' + password)
+
     return host, port, db, username, password
