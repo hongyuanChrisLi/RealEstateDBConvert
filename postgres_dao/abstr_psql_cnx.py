@@ -11,8 +11,6 @@ class AbstrPsqlCnx(object):
     def __init__(self):
         url = os.environ['RET_DB_URL']
         (db_host, db_port, db_name, db_user, db_pass) = parse_url(url)
-        print(parse_url(url))
-
         try:
             self.cnx = psycopg2.connect(dbname=db_name,
                                         user=db_user,
@@ -24,5 +22,9 @@ class AbstrPsqlCnx(object):
             print(e)
             sys.exit(constants.FAILED_TO_CONNECT)
 
+        print ("Connected to Postgres: " + db_name + "\n")
         self.cursor = self.cnx.cursor()
 
+    def close(self):
+        self.cursor.close()
+        self.cnx.close()
