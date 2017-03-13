@@ -27,11 +27,15 @@ class AbstrPsqlCnx(object):
     def _trunc_table_(self, table):
         self.cursor.execute("TRUNCATE TABLE " + table)
 
-    def _copy_table_(self, table, field_num, data):
+    def _insert_table_(self, table, field_num, data):
         val_format = '('+','.join(['%s']*field_num)+')'
         args_str = ','.join(self.cursor.mogrify(val_format, x) for x in data)
         self.cursor.execute("INSERT INTO " + table + " VALUES " + args_str)
         self.cnx.commit()
+
+    def _select_single_value_(self, stmt):
+        self.cursor.execute(stmt)
+        return self.cursor.fetchone()
 
     def close(self):
         self.cursor.close()
