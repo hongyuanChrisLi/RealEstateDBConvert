@@ -1,8 +1,16 @@
 from mysql_dao.select_dao import SelectDao as MysqlSelectDao
+from postgres_dao.ddl_dao import DdlDao
 from postgres_dao.dml_dao import DmlDao as PsqlDmlDao
 
+psql_ddl_dao = DdlDao()
 mysql_select_dao = MysqlSelectDao()
 psql_dml_dao = PsqlDmlDao()
+
+psql_ddl_dao.create_tables()
+
+county_data = mysql_select_dao.select_all_counties()
+psql_dml_dao.trunc_county()
+psql_dml_dao.insert_county(county_data)
 
 data = mysql_select_dao.select_full_addr_month_rpt()
 psql_dml_dao.trunc_addr_month_rpt()

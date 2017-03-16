@@ -1,5 +1,12 @@
+DROP TABLE IF EXISTS county;
 DROP TABLE IF EXISTS prop_addr_price_month_rpt;
 DROP TABLE IF EXISTS mls_price_rpt;
+
+CREATE TABLE county
+(
+    COUNTY_ID int,
+    NAME varchar(20)
+);
 
 CREATE TABLE prop_addr_price_month_rpt
 (
