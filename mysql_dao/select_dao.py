@@ -1,6 +1,6 @@
 from abstr_mysql_cnx import AbstrMySqlCnx
 from utility.constants import COUNTY_TABLE
-from utility.constants import ADDR_PRICE_MONTH_RPT_TABLE, MLS_PRICE_RPT_TABLE
+from utility.constants import PROP_ADDR_PRICE_RPT_TABLE, MLS_PRICE_RPT_TABLE
 
 
 class SelectDao(AbstrMySqlCnx):
@@ -12,8 +12,8 @@ class SelectDao(AbstrMySqlCnx):
         return self._select_full_table_(COUNTY_TABLE)
 
     def select_full_addr_month_rpt(self):
-        print ("Full select on " + ADDR_PRICE_MONTH_RPT_TABLE)
-        return self._select_full_table_(ADDR_PRICE_MONTH_RPT_TABLE)
+        print ("Full select on " + PROP_ADDR_PRICE_RPT_TABLE)
+        return self._select_full_table_(PROP_ADDR_PRICE_RPT_TABLE)
 
     def select_full_mls_rpt(self):
         print ("Full select on " + MLS_PRICE_RPT_TABLE)

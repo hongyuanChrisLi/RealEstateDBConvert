@@ -1,6 +1,6 @@
 from abstr_psql_cnx import AbstrPsqlCnx
 from utility.constants import COUNTY_TABLE
-from utility.constants import ADDR_PRICE_MONTH_RPT_TABLE, MLS_PRICE_RPT_TABLE
+from utility.constants import PROP_ADDR_PRICE_RPT_TABLE, MLS_PRICE_RPT_TABLE
 
 
 class DmlDao(AbstrPsqlCnx):
@@ -18,11 +18,11 @@ class DmlDao(AbstrPsqlCnx):
     """ ADDR_PRICE_MONTH_RPT_TABLE """
 
     def insert_addr_month_rpt(self, data):
-        self.__print_insert__(ADDR_PRICE_MONTH_RPT_TABLE, len(data))
-        self._insert_table_(ADDR_PRICE_MONTH_RPT_TABLE, 8, data)
+        self.__print_insert__(PROP_ADDR_PRICE_RPT_TABLE, len(data))
+        self._insert_table_(PROP_ADDR_PRICE_RPT_TABLE, 9, data)
 
     def trunc_addr_month_rpt(self):
-        self._trunc_table_(ADDR_PRICE_MONTH_RPT_TABLE)
+        self._trunc_table_(PROP_ADDR_PRICE_RPT_TABLE)
 
     """ MLS_PRICE_RPT_TABLE """
 
