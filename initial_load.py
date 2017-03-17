@@ -9,8 +9,13 @@ psql_dml_dao = PsqlDmlDao()
 psql_ddl_dao.create_tables()
 
 county_data = mysql_select_dao.select_all_counties()
-psql_dml_dao.trunc_county()
 psql_dml_dao.insert_county(county_data)
+
+city_data = mysql_select_dao.select_all_cities()
+psql_dml_dao.insert_city(city_data)
+
+zipcode_data = mysql_select_dao.select_all_zipcodes()
+psql_dml_dao.insert_zipcode(zipcode_data)
 
 data = mysql_select_dao.select_full_addr_month_rpt()
 psql_dml_dao.trunc_addr_month_rpt()

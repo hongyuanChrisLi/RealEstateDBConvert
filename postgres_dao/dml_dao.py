@@ -1,5 +1,5 @@
 from abstr_psql_cnx import AbstrPsqlCnx
-from utility.constants import COUNTY_TABLE
+from utility.constants import COUNTY_TABLE, CITY_TABLE, ZIPCODE_TABLE
 from utility.constants import PROP_ADDR_PRICE_RPT_TABLE, MLS_PRICE_RPT_TABLE
 
 
@@ -12,8 +12,15 @@ class DmlDao(AbstrPsqlCnx):
         self.__print_insert__(COUNTY_TABLE, len(data))
         self._insert_table_(COUNTY_TABLE, 2, data)
 
-    def trunc_county(self):
-        self._trunc_table_(COUNTY_TABLE)
+    """ CITY_TABLE """
+    def insert_city(self, data):
+        self.__print_insert__(CITY_TABLE, len(data))
+        self._insert_table_(CITY_TABLE, 3, data)
+
+    """ ZIPCODE_TABLE """
+    def insert_zipcode(self, data):
+        self.__print_insert__(ZIPCODE_TABLE, len(data))
+        self._insert_table_(ZIPCODE_TABLE, 3, data)
 
     """ ADDR_PRICE_MONTH_RPT_TABLE """
 

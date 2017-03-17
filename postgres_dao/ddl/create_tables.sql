@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS zipcode;
+DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS county;
 DROP TABLE IF EXISTS prop_addr_price_rpt;
 DROP TABLE IF EXISTS mls_price_rpt;
@@ -7,6 +9,22 @@ CREATE TABLE county
     COUNTY_ID int,
     NAME varchar(20),
     CONSTRAINT COUNTY_PK PRIMARY KEY(COUNTY_ID)
+);
+
+CREATE TABLE city
+(
+    CITY_ID int,
+    NAME varchar(20),
+    COUNTY_ID int REFERENCES county(COUNTY_ID),
+    CONSTRAINT CITY_PK PRIMARY KEY(CITY_ID)
+);
+
+CREATE TABLE zipcode
+(
+    AREA_ID int,
+    ZIPCODE varchar(5),
+    CITY_ID int REFERENCES city(CITY_ID),
+    CONSTRAINT ZIPCODE_PK PRIMARY KEY(AREA_ID)
 );
 
 CREATE TABLE prop_addr_price_rpt
