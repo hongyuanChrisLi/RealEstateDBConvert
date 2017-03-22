@@ -21,7 +21,7 @@ data = mysql_select_dao.select_full_addr_month_rpt()
 psql_dml_dao.trunc_addr_month_rpt()
 psql_dml_dao.insert_addr_month_rpt(data)
 
-data = mysql_select_dao.select_full_mls_rpt()
+data = mysql_select_dao.select_full_mls_daily_rpt()
 psql_dml_dao.trunc_mls_rpt()
 psql_dml_dao.insert_mls_rpt(data)
 

@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS zipcode;
 DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS county;
 DROP TABLE IF EXISTS prop_addr_price_rpt;
-DROP TABLE IF EXISTS mls_price_rpt;
+DROP TABLE IF EXISTS mls_daily_rpt;
 
 CREATE TABLE county
 (
@@ -43,16 +43,17 @@ CREATE TABLE prop_addr_price_rpt
 CREATE INDEX prop_addr_price_rpt_idx1
 ON prop_addr_price_rpt(COUNTY_ID, CITY_ID, ZIPCODE, PROP_TYPE_ID);
 
-CREATE TABLE mls_price_rpt(
-    AREA_ID int ,
-    PROP_TYPE_ID int,
-    RPT_DATE date,
-    CITY varchar(20),
-    ZIPCODE varchar(5),
-    AVG_PRICE numeric(10,2),
-    AVG_PRICE_STRUCT_SQFT numeric(10,2),
-    AVG_PRICE_TOT_SQFT numeric(10,2),
-    TOT_NUM int,
-    CONSTRAINT MLS_PRICE_RPT_PK
-    PRIMARY KEY (AREA_ID, PROP_TYPE_ID, RPT_DATE)
+CREATE TABLE mls_daily_rpt
+(
+    COUNTY_ID	int,
+    CITY_ID	int,
+    AVG_PRICE_STRUCT_SQFT	numeric(10,2),
+    AVG_PRICE_TOT_SQFT	numeric(10,2),
+    SINGLE_FAMILY_NUM	int,
+    TOWNHOUSE_NUM	int,
+    CONDO_NUM	int,
+    MULTI_UNIT_NUM	int,
+    MOBILE_NUM	int,
+    CONSTRAINT MLS_DAILY_RPT_PK
+    PRIMARY KEY (COUNTY_ID, CITY_ID)
 );

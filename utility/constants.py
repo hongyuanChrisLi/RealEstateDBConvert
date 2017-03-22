@@ -9,6 +9,6 @@ CITY_TABLE = 'city'
 ZIPCODE_TABLE = 'zipcode'
 
 PROP_ADDR_PRICE_RPT_TABLE = 'prop_addr_price_rpt'
-MLS_PRICE_RPT_TABLE = 'mls_price_rpt'
+MLS_DAILY_RPT_TABLE = 'mls_daily_rpt'
 
 
