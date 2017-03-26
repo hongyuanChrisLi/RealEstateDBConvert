@@ -35,7 +35,7 @@ class DmlDao(AbstrPsqlCnx):
 
     def insert_mls_rpt(self, data):
         self.__print_insert__(MLS_DAILY_RPT_TABLE, len(data))
-        self._insert_table_(MLS_DAILY_RPT_TABLE, 9, data)
+        self._insert_table_(MLS_DAILY_RPT_TABLE, 10, data)
 
     def trunc_mls_rpt(self):
         self._trunc_table_(MLS_DAILY_RPT_TABLE)

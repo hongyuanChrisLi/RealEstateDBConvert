@@ -54,6 +54,7 @@ CREATE TABLE mls_daily_rpt
     CONDO_NUM	int,
     MULTI_UNIT_NUM	int,
     MOBILE_NUM	int,
+    TOT_NUM int,
     CONSTRAINT MLS_DAILY_RPT_PK
     PRIMARY KEY (COUNTY_ID, CITY_ID)
 );
