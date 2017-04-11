@@ -26,3 +26,11 @@ class SelectDao(AbstrMySqlCnx):
     def select_full_mls_daily_rpt(self):
         print ("Full select on " + MLS_DAILY_RPT_TABLE)
         return self._select_full_table_(MLS_DAILY_RPT_TABLE)
+
+    def select_latest_upd_date_addr_price_rpt(self):
+        sel_stmt = " SELECT CAST(UPDATE_TIME AS DATE)" \
+               " FROM information_schema.tables" \
+               " WHERE TABLE_SCHEMA = '" + self.schema + "'" \
+               " AND TABLE_NAME = '" + PROP_ADDR_PRICE_RPT_TABLE + "'"
+        return self._select_single_value_(sel_stmt)
+

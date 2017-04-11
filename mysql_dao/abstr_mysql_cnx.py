@@ -13,6 +13,7 @@ class AbstrMySqlCnx(object):
     def __init__(self):
         url = os.environ['RET_MYSQL_URL']
         (db_host, db_port, db_name, db_user, db_pass) = parse_url(url)
+        self.schema = db_name
         config = {
             'user': db_user,
             'password': db_pass,
@@ -38,6 +39,10 @@ class AbstrMySqlCnx(object):
     def _select_(self, stmt, data):
         self.cursor.execute(stmt, data)
         return self.cursor.fetchall()
+
+    def _select_single_value_(self, sel_stmt):
+        self.cursor.execute(sel_stmt)
+        return self.cursor.fetchone()[0]
 
     def close(self):
         self.cursor.close()
